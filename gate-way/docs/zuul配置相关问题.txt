@@ -1,0 +1,5 @@
+动态路由刷新：
+1.主要注入zoolProperties
+2.刷新方法是post
+3.客户端如果调用刷新，需要配置actuator
+4.刷新地址是url:/actuator/refresh

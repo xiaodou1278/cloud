@@ -1,0 +1,49 @@
+server:
+  port: 5500
+#spring:
+#  application:
+#    name: zuul-client
+eureka:
+  client:
+    registry-fetch-interval-seconds: 5 # 获取服务列表的周期：5s
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+#zuul:
+#  routes:
+#    pactera: #路由ID
+#      path: /pactera/** #映射路径
+#     # url: http://127.0.0.1:8877 # 映射路径对应的实际url地址
+#      serviceId: pactera #指定服务名称
+#    api:
+#      path: /api/** #映射路径
+#        # url: http://127.0.0.1:8877 # 映射路径对应的实际url地址
+#      serviceId: api #指定服务名称
+#  prefix: /api
+#  retryable: true
+ribbon:
+  eureka:
+    enabled: true
+  ConnectTimeout: 250 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: true # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 2 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 1 # 同一实例的重试次数
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 6000 # 熔断超时时长：6000ms
+#其中 management 是关于 actuator 相关的，接下来自动刷新配置的时候需要使用。
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,14 @@
+server:
+  port: 6611
+#data 部分是当无法读取配置中心的配置时，使用此配置，以免项目无法启动
+#data:
+#  env: NaN
+#  user:
+#    username: NaN
+#    password: NaN
+spring:
+  rabbitmq:
+    host: 127.0.0.1 # 192.168.17.128
+    port: 5672
+    username: admin
+    password: 123456

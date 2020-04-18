@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: config-bus
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xiaodou1278/config
+          default-label: master #配置文件分支
+          search-paths: config  #配置文件所在根目录
+          username: 1453776187@qq.com
+          password: xiaosi@1278
+    bus:
+      enabled: true #:是否启用springcloud config bus
+      trace:
+        enabled: true #开启跟踪总线事件
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: 123456
+
+#其中 management 是关于 actuator 相关的，接下来自动刷新配置的时候需要使用。
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
